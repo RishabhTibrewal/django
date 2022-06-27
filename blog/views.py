@@ -9,6 +9,7 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Post
+from django.core.mail import send_mail
 
 
 def home(request):
