@@ -26,7 +26,7 @@ SECRET_KEY = 'exhlfdat&vfum(-34*c2uroi(($ww(yo$9pv98=e6p^gl(-eoj'
 DEBUG = True
 
 ALLOWED_HOSTS = ['bloggersposts.herokuapp.com']
-
+ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1']
 
 # Application definition
 
