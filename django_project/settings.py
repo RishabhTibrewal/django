@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django_heroku 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+IS_HEROKU = "DYNO" in os.environ
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -141,3 +144,16 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 
 # RECIPIENT_ADDRESS = env('rishabh780055@gmail.com')
+
+AWS_ACCESS_KEY_ID =  os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS = os.environ.get('AWS_SECRET_ACCESS')
+AWS_STORAGE_BUCKET_NAME =  os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# herokku activation
+django_heroku.settings(locals())
+
